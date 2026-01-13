@@ -18,7 +18,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full overflow-hidden">
+    <header className="sticky top-0 z-40 w-full">
       <div className="absolute inset-0 -z-10 bg-[#0F3A7D]" />
 
       <div className="border-b border-white/20 bg-black/20 backdrop-blur-md shadow-lg">

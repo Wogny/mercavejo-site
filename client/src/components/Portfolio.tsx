@@ -110,7 +110,7 @@ export default function Portfolio() {
               <ChevronRight className="w-6 h-6 text-[#20447D]" />
             </button>
 
-            <div ref={scrollerRef} className="no-scrollbar overflow-hidden">
+            <div ref={scrollerRef} className="no-scrollbar overflow-x-auto">
               <div className="flex gap-2 py-10 whitespace-nowrap">
                 {corridorItems.map((item, idx) => (
                   <button

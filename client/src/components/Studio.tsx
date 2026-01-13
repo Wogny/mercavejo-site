@@ -104,7 +104,7 @@ export default function Studio() {
 
           <div className="order-1 lg:order-2">
             <div className="relative">
-              <div className="absolute -inset-6 rounded-[28px] bg-gradient-to-br from-[#0F3A7D]/18 via-[#d4b67b]/18 to-transparent blur-2xl" />
+              <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-[#0F3A7D]/18 via-[#d4b67b]/18 to-transparent blur-2xl" />
 
               <div className="group relative h-80 sm:h-[520px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-200/60">
                 <img
