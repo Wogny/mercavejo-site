@@ -58,8 +58,8 @@ const pacotesMensais = [
 const adicionais = [
   { id: 'landing', servico: 'Criação de landing page profissional', naoCliente: 'R$ 1.500', cliente: '', obs: '(até 3x sem juros)' },
   { id: 'edicao-video', servico: 'Edição de vídeos', naoCliente: 'R$ 150', cliente: 'R$ 70' },
-  { id: 'criacao-arte', servico: 'Criação de arte', naoCliente: 'R$ 100', cliente: 'R$ 40' },
-  { id: 'pack-artes', servico: '5 artes ou +', naoCliente: 'R$ 60', cliente: 'R$ 30' },
+  { id: 'criacao-arte', servico: 'Criação de até 4 artes', naoCliente: 'R$ 100', cliente: 'R$ 40' },
+  { id: 'pack-artes', servico: 'Acima de 5 artes', naoCliente: 'R$ 60', cliente: 'R$ 30' },
   { id: 'outdoor', servico: 'Arte para outdoor', naoCliente: 'R$ 300', cliente: 'R$ 150' },
   { id: 'trafego', servico: 'Tráfego pago (mensal)', naoCliente: 'R$ 500', cliente: 'R$ 250' },
 ];

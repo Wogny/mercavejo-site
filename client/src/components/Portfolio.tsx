@@ -81,7 +81,7 @@ export default function Portfolio() {
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-10">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#0F3A7D] mb-3">Nossos clientes</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#0F3A7D] mb-3">Alguns de nossos clientes</h2>
             <p className="text-base sm:text-lg text-[#0F3A7D] max-w-2xl mx-auto">
               Clientes que confiam no nosso trabalho
             </p>
