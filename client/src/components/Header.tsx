@@ -1,20 +1,37 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLocation } from 'wouter';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [location, setLocation] = useLocation();
 
   const navLinks = [
-    { label: 'Serviços', href: '#services' },
-    { label: 'Portfólio', href: '#portfolio' },
-    { label: 'Estúdio', href: '#studio' },
-    { label: 'Pacotes', href: '#packages' }, // ✅ ADICIONADO
+    { label: 'Serviços', href: '/#services' },
+    { label: 'Portfólio', href: '/#portfolio' },
+    { label: 'Podcast', href: '/podcast' },
+    { label: 'Pacotes', href: '/#packages' },
   ];
 
-  const scrollToSection = (href: string) => {
-    const id = href.replace('#', '');
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  const handleNavClick = (href: string) => {
+    setIsMenuOpen(false);
+    
+    if (href.startsWith('/#')) {
+      const id = href.replace('/#', '');
+      if (location !== '/') {
+        setLocation('/');
+        // Pequeno delay para garantir que a Home carregou antes de scrollar
+        setTimeout(() => {
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      setLocation(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -24,7 +41,11 @@ export default function Header() {
       <div className="border-b border-white/20 bg-black/20 backdrop-blur-md shadow-lg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <a href="#" className="flex items-center gap-2 flex-shrink-0">
+            <a 
+              href="/" 
+              onClick={(e) => { e.preventDefault(); handleNavClick('/'); }}
+              className="flex items-center gap-2 flex-shrink-0"
+            >
               <img
                 src="/images/logo.png"
                 alt="Mercavejo"
@@ -39,7 +60,7 @@ export default function Header() {
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
+                    handleNavClick(link.href);
                   }}
                   className="text-white/85 hover:text-[#d4b67b] font-medium transition-colors duration-300"
                 >
@@ -51,9 +72,7 @@ export default function Header() {
             <div className="hidden md:block">
               <Button
                 className="bg-[#0F3A7D] hover:bg-[#0a2555] text-white font-semibold px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-                onClick={() =>
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-                }
+                onClick={() => handleNavClick('/#contact')}
               >
                 Fale Conosco
               </Button>
@@ -80,8 +99,7 @@ export default function Header() {
                   href={link.href}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
-                    setIsMenuOpen(false);
+                    handleNavClick(link.href);
                   }}
                   className="block text-white/85 hover:text-[#d4b67b] font-medium py-2 transition-colors"
                 >
@@ -91,10 +109,7 @@ export default function Header() {
 
               <Button
                 className="w-full bg-[#0F3A7D] hover:bg-[#0a2555] text-white font-semibold py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-                onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  setIsMenuOpen(false);
-                }}
+                onClick={() => handleNavClick('/#contact')}
               >
                 Fale Conosco
               </Button>
