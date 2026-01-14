@@ -1,4 +1,4 @@
-'''import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { CheckCircle2, TrendingUp, Scale, BarChart, Search, FileText } from "lucide-react";
 
 export default function Packages() {
@@ -102,4 +102,3 @@ export default function Packages() {
     </section>
   );
 }
-'''
