@@ -1,68 +1,57 @@
 import { Button } from '@/components/ui/button';
 import { useLocation } from 'wouter';
+import { Mic2, Star } from 'lucide-react';
 
 export default function Studio() {
   const [, setLocation] = useLocation();
 
-  const PricingMiniCard = () => (
+  const StudioInfoCard = () => (
     <div className="max-w-md mx-auto">
-      <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-[#00000]/20 via-[#000000]/25 to-transparent">
-        <div className="rounded-3xl bg-white/00 backdrop-blur-sm border border-white/1000 shadow-lg">
-          <div className="p-6 sm:p-7">
-            <div className="flex items-start justify-between gap-4">
-              <div className="min-w-0">
-                <p className="text-xs font-semibold tracking-wider text-[#00000]/80 uppercase">
-                  Tabela de preços
-                </p>
-                <h3 className="text-xl sm:text-2xl font-display text-[#00000] mt-2">
-                  Locação do Estúdio
-                </h3>
+      <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-white/20 via-white/10 to-transparent">
+        <div className="rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl">
+          <div className="p-6 sm:p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-lg bg-[#d4b67b]/20 text-[#d4b67b]">
+                <Mic2 className="w-6 h-6" />
               </div>
-
-              <div className="shrink-0 text-right">
-                <div className="inline-flex items-center rounded-full bg-[gold]/50 px-3 py-1">
-                  <span className="text-xs font-semibold text-[#00000]">Popular</span>
-                </div>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-display text-white">
+                Hub de Conteúdo
+              </h3>
             </div>
 
-            <div className="mt-5 flex items-end gap-2">
-              <span className="text-4xl sm:text-5xl font-display text-white">R$ 400</span>
-              <span className="text-sm text-white/80 mb-1">/Hora</span>
-            </div>
+            <p className="text-white/90 leading-relaxed mb-6">
+              O Estúdio Mercavejo é o berço de grandes conversas que geram resultados reais. Mais do que um espaço de gravação, oferecemos a estrutura completa para transformar sua expertise em autoridade digital.
+            </p>
 
-            <ul className="mt-5 space-y-2 text-sm text-white/85">
-              <li className="flex gap-2">
-                <span className="mt-[4px] h-2 w-2 rounded-full bg-[#FFD700]" />
-                <span>Iluminação e cenário</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-[4px] h-2 w-2 rounded-full bg-[#FFD700]" />
-                <span>Captação de áudio</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-[4px] h-2 w-2 rounded-full bg-[#FFD700]" />
-                <span>Suporte na gravação</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="mt-[4px] h-2 w-2 rounded-full bg-[#FFD700]" />
-                <span>Gravação via camêras profissionais</span>
-              </li>
-            </ul>
+            <div className="space-y-4 mb-8">
+              <p className="text-xs font-bold tracking-widest text-[#d4b67b] uppercase">
+                Podcasts de Sucesso:
+              </p>
+              <div className="grid grid-cols-1 gap-3">
+                {[
+                  "Treina que sara",
+                  "Antes da consulta",
+                  "Café com Zakia",
+                  "Sai do raso",
+                  "Gente amiga"
+                ].map((podcast) => (
+                  <div key={podcast} className="flex items-center gap-3 text-white/80 group">
+                    <Star className="w-4 h-4 text-[#d4b67b] fill-[#d4b67b]/20 group-hover:fill-[#d4b67b] transition-all" />
+                    <span className="text-sm font-medium">{podcast}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
             <Button
-              className="mt-6 w-full bg-gradient-to-r from-[#0F3A7D] to-blue-700 hover:from-[#0a2555] hover:to-blue-900 text-white font-semibold text-sm px-4 py-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              className="w-full bg-[#d4b67b] hover:bg-[#bfa46e] text-[#0F3A7D] font-bold text-sm px-4 py-6 rounded-xl shadow-lg transition-all duration-300"
               onClick={() => {
                 setLocation('/podcast');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
             >
-              Saiba mais
+              Saiba mais sobre o Estúdio
             </Button>
-
-            <p className="mt-3 text-xs text-white/70">
-              Valores finais e disponibilidade via atendimento.
-            </p>
           </div>
         </div>
       </div>
@@ -72,57 +61,49 @@ export default function Studio() {
   return (
     <section
       id="studio"
-      className="relative py-20 sm:py-32 bg-[#0F3A7D] bg-cover bg-center bg-no-repeat overflow-hidden"
+      className="relative py-20 sm:py-32 bg-[#0F3A7D] overflow-hidden"
     >
-      {/* overlay claro para manter o layout “clean” e legível */}
-
-      {/* Fundo decorativo (mantido) */}
+      {/* Fundo decorativo */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 -left-24 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-[#0F3A7D]/18 via-blue-500/10 to-transparent blur-3xl" />
-        <div className="absolute -bottom-24 -right-24 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-[#d4b67b]/22 via-yellow-400/10 to-transparent blur-3xl" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0000]/15 to-transparent" />
+        <div className="absolute -top-24 -left-24 h-[420px] w-[420px] rounded-full bg-gradient-to-br from-blue-400/10 via-blue-500/5 to-transparent blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-[#d4b67b]/10 via-yellow-400/5 to-transparent blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-10">
+        <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-5">
-            <span className="h-2 w-2 rounded-full bg-[#FFD700]" />
-            <span className="text-sm font-semibold tracking-wider text-[#FFFFFF]/80 uppercase">
-              Produção de podcasts
+            <span className="h-2 w-2 rounded-full bg-[#d4b67b]" />
+            <span className="text-sm font-semibold tracking-wider text-white/60 uppercase">
+              Exclusividade em Catanduva
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl font-display text-[#FFFFFF]">
+          <h2 className="text-4xl sm:text-5xl font-display text-white mb-6">
             Estúdio Mercavejo
           </h2>
 
-          <p className="text-lg text-white/80 mt-4 max-w-2xl mx-auto leading-relaxed">
-            Conheça nosso estúdio de gravação, monte seu podcast conosco.
+          <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+            A única agência da região com estrutura própria de gravação para elevar o nível do seu posicionamento.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="order-2 lg:order-1">
-            <PricingMiniCard />
+            <StudioInfoCard />
           </div>
 
           <div className="order-1 lg:order-2">
             <div className="relative">
-              <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-[#0F3A7D]/18 via-[#d4b67b]/18 to-transparent blur-2xl" />
+              <div className="absolute inset-0 rounded-[28px] bg-[#d4b67b]/10 blur-3xl" />
 
-              <div className="group relative h-80 sm:h-[520px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-slate-200/60">
+              <div className="group relative h-80 sm:h-[520px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
                 <img
                   src="/images/Estúdio.jpg"
                   alt="Estúdio Mercavejo"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                   loading="lazy"
                 />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-300" />
-
-                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute -inset-10 bg-gradient-to-r from-transparent via-white/18 to-transparent rotate-12" />
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F3A7D]/60 via-transparent to-transparent" />
               </div>
             </div>
           </div>
