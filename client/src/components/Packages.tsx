@@ -45,14 +45,14 @@ export default function Packages() {
             icon={<TrendingUp className="w-7 h-7" />}
             title="Presença Estratégica"
             description="Para empresas iniciando sua presença digital profissional e que buscam construir uma base sólida para crescimento futuro."
-            price="A partir de R$ 2.500"
+            price="A partir de R$ 1.000"
             bestFor="Negócios locais, profissionais liberais e startups."
           />
           <PlanCard
             icon={<BarChart className="w-7 h-7" />}
             title="Crescimento Acelerado"
             description="Para negócios estabelecidos que desejam expandir market share, aumentar a geração de leads e otimizar a conversão."
-            price="R$ 4.500 - R$ 8.000"
+            price="R$ 1.600 - R$ 2.000"
             bestFor="Empresas em expansão e com metas de receita agressivas."
           />
           <PlanCard
