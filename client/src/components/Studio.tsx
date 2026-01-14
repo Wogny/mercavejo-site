@@ -1,6 +1,9 @@
 import { Button } from '@/components/ui/button';
+import { useLocation } from 'wouter';
 
 export default function Studio() {
+  const [, setLocation] = useLocation();
+
   const PricingMiniCard = () => (
     <div className="max-w-md mx-auto">
       <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-[#00000]/20 via-[#000000]/25 to-transparent">
@@ -49,11 +52,12 @@ export default function Studio() {
 
             <Button
               className="mt-6 w-full bg-gradient-to-r from-[#0F3A7D] to-blue-700 hover:from-[#0a2555] hover:to-blue-900 text-white font-semibold text-sm px-4 py-5 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-              onClick={() =>
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
-              }
+              onClick={() => {
+                setLocation('/podcast');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
             >
-              Solicitar orçamento
+              Saiba mais
             </Button>
 
             <p className="mt-3 text-xs text-white/70">
