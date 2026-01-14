@@ -93,7 +93,7 @@ export default function Packages() {
                             Agendar Análise Gratuita
                         </a>
                     </Button>
-                    <p className="text-xs text-slate-400 mt-4">Via WhatsApp ou Calendly</p>
+                    <p className="text-xs text-slate-400 mt-4">Via WhatsApp</p>
                 </div>
             </div>
         </div>
