@@ -41,8 +41,8 @@ export default function Home() {
         {/* 6 - FAQ */}
         <FAQ />
 
-        {/* 7 - azul (novo azul #20447D) */}
-        <div className="bg-[#20447D] text-white">
+        {/* 7 - Contato (Fundo Branco) */}
+        <div className="bg-white">
           <Contact />
         </div>
       </main>
