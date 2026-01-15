@@ -91,7 +91,7 @@ export default function Podcast() {
     <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="pt-20">
+      <main>
         {/* Hero Section */}
         <section className="relative py-20 bg-[#0F3A7D] text-white overflow-hidden">
           <div className="absolute inset-0 opacity-10">
