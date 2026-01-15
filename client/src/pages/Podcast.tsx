@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -43,6 +44,25 @@ const cutsExamples = [
 ];
 
 export default function Podcast() {
+  const videoRef1 = useRef<HTMLVideoElement>(null);
+  const videoRef2 = useRef<HTMLVideoElement>(null);
+  const [isMuted1, setIsMuted1] = useState(true);
+  const [isMuted2, setIsMuted2] = useState(true);
+
+  const handleMouseEnter = (videoRef: React.RefObject<HTMLVideoElement>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      setMuted(false);
+    }
+  };
+
+  const handleMouseLeave = (videoRef: React.RefObject<HTMLVideoElement>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      setMuted(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -135,21 +155,31 @@ export default function Podcast() {
                 </ul>
               </div>
               <div className="md:w-1/2 grid grid-cols-2 gap-4">
-                <div className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative group shadow-lg hover:shadow-xl transition-shadow">
+                <div 
+                  className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative group shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                  onMouseEnter={() => handleMouseEnter(videoRef1, setIsMuted1)}
+                  onMouseLeave={() => handleMouseLeave(videoRef1, setIsMuted1)}
+                >
                    <video 
+                     ref={videoRef1}
                      src="/images/corte1.mp4" 
                      className="w-full h-full object-cover" 
-                     controls
+                     autoPlay
                      loop
                      muted
                      playsInline
                    />
                 </div>
-                <div className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative mt-8 group shadow-lg hover:shadow-xl transition-shadow">
+                <div 
+                  className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative mt-8 group shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+                  onMouseEnter={() => handleMouseEnter(videoRef2, setIsMuted2)}
+                  onMouseLeave={() => handleMouseLeave(videoRef2, setIsMuted2)}
+                >
                    <video 
+                     ref={videoRef2}
                      src="/images/corte2.mp4" 
                      className="w-full h-full object-cover" 
-                     controls
+                     autoPlay
                      loop
                      muted
                      playsInline
