@@ -38,7 +38,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full">
       <div className="absolute inset-0 -z-10 bg-[#0F3A7D]" />
 
-      <div className="border-b border-white/20 bg-black/20 backdrop-blur-md shadow-lg">
+      <div className="bg-black/20 backdrop-blur-md shadow-lg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <a 

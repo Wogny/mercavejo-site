@@ -135,17 +135,31 @@ export default function Podcast() {
                 </ul>
               </div>
               <div className="md:w-1/2 grid grid-cols-2 gap-4">
-                <div className="aspect-[9/16] bg-gray-200 rounded-2xl overflow-hidden relative group">
-                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative group shadow-lg hover:shadow-xl transition-shadow">
+                   <video 
+                     src="/images/corte1.mp4" 
+                     className="w-full h-full object-cover" 
+                     controls
+                     loop
+                     muted
+                     playsInline
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <Video className="text-white w-12 h-12" />
                    </div>
-                   <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=800" alt="Corte" className="w-full h-full object-cover" />
                 </div>
-                <div className="aspect-[9/16] bg-gray-200 rounded-2xl overflow-hidden relative mt-8 group">
-                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative mt-8 group shadow-lg hover:shadow-xl transition-shadow">
+                   <video 
+                     src="/images/corte2.mp4" 
+                     className="w-full h-full object-cover" 
+                     controls
+                     loop
+                     muted
+                     playsInline
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <Video className="text-white w-12 h-12" />
                    </div>
-                   <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=800" alt="Corte" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
