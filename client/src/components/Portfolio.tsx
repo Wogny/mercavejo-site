@@ -9,14 +9,14 @@ type PortfolioItem = {
 };
 
 const portfolioItems: PortfolioItem[] = [
-  { title: 'Exonline', category: 'Design', image: '/images/exonline.webp' },
-  { title: 'Optica Brasil', category: 'Design', image: '/images/optica.webp' },
-  { title: 'Sublime', category: 'Design', image: '/images/sublime.webp' },
-  { title: 'Vox Fm', category: 'Design', image: '/images/vox.webp' },
-  { title: 'Faveni', category: 'Social Media', image: '/images/faveni.webp' },
-  { title: 'Netflex', category: 'Social Media', image: '/images/netflex.webp' },
-  { title: 'Rio Fibra', category: 'Social Media', image: '/images/rio fibra.webp' },
-  { title: 'Açougue Scoz', category: 'Social Media', image: '/images/scoz.webp' },
+  { title: 'Exonline', category: 'Design', image: '/images/exonlinearte.webp' },
+  { title: 'Optica Brasil', category: 'Design', image: '/images/opticaarte.webp' },
+  { title: 'Sublime', category: 'Design', image: '/images/sublimearte.jpg' },
+  { title: 'Vox Fm', category: 'Design', image: '/images/voxarte.webp' },
+  { title: 'Faveni', category: 'Social Media', image: '/images/faveniarte.webp' },
+  { title: 'Netflex', category: 'Social Media', image: '/images/netflexarte.webp' },
+  { title: 'Rio Fibra', category: 'Social Media', image: '/images/riofibraarte.webp' },
+  { title: 'Açougue Scoz', category: 'Social Media', image: '/images/scozarte.webp' },
 ];
 
 export default function Portfolio() {
