@@ -16,9 +16,9 @@ const infiniteClients = [...clients, ...clients];
 
 export default function Clients() {
   return (
-    <section className="py-12 bg-white border-y border-gray-100 overflow-hidden">
+    <section className="py-12 bg-[#0a192f] border-y border-white/5 overflow-hidden">
       <div className="container mx-auto px-4 mb-8 text-center">
-        <p className="text-sm font-bold text-[#0F3A7D]/60 tracking-widest uppercase">
+        <p className="text-sm font-bold text-[#d4b67b] tracking-widest uppercase opacity-80">
           Empresas que confiam na Mercavejo
         </p>
       </div>
@@ -53,8 +53,8 @@ export default function Clients() {
         </motion.div>
         
         {/* Gradientes nas bordas para suavizar a entrada/saída */}
-        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0a192f] to-transparent z-10" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0a192f] to-transparent z-10" />
       </div>
     </section>
   );

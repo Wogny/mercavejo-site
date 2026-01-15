@@ -145,10 +145,10 @@ export default function Services() {
                     onClick={() => setExpandedId(isExpanded ? null : service.id)}
                     className={[
                       'relative h-full p-6 sm:p-8 cursor-pointer transition-all duration-500 overflow-hidden',
-                      'bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl',
-                      'hover:bg-white/10 hover:border-white/20',
-                      isFeatured ? 'ring-1 ring-[#d4b67b]/40' : '',
-                      isExpanded ? 'bg-white/15 border-[#d4b67b]/30' : ''
+                      'bg-white/[0.08] backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]',
+                      'hover:bg-white/[0.12] hover:border-white/30 hover:shadow-[0_8px_32px_0_rgba(212,182,123,0.2)]',
+                      isFeatured ? 'ring-1 ring-[#d4b67b]/50' : '',
+                      isExpanded ? 'bg-white/[0.15] border-[#d4b67b]/40' : ''
                     ].join(' ')}
                   >
                     {/* Background Glow Effect on Hover */}
