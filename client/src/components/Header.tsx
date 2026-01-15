@@ -92,7 +92,7 @@ export default function Header() {
           </div>
 
           {isMenuOpen && (
-            <nav className="md:hidden pb-6 border-t border-white/20 pt-4 space-y-3">
+            <nav className="md:hidden pb-6 pt-4 space-y-3">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
