@@ -2,13 +2,15 @@ import { motion } from 'framer-motion';
 
 const clients = [
   { name: 'EXONLINE', logo: '/images/exonline.webp' },
-  { name: 'FIDELIDADE', logo: '/images/branco.webp' }, // Assumindo que branco.webp é a logo fidelidade ou similar
+  { name: 'FIDELIDADE', logo: '/images/branco.webp' },
   { name: 'OPTICA', logo: '/images/optica.webp' },
   { name: 'FAVENI', logo: '/images/faveni.webp' },
   { name: 'SUBLIME', logo: '/images/sublime.webp' },
-  { name: 'LUCIANA', logo: '/images/logo.webp' }, // Usando logo.webp como fallback se luciana não existir
+  { name: 'LUCIANA', logo: '/images/logo.webp' },
   { name: 'RIOFIBRA', logo: '/images/rio fibra.webp' },
   { name: 'NETFLEX', logo: '/images/netflex.webp' },
+  { name: 'SCOZ', logo: '/images/scoz.webp' },
+  { name: 'VOX', logo: '/images/vox.webp' },
 ];
 
 // Duplicar a lista para criar o efeito infinito
@@ -41,12 +43,13 @@ export default function Clients() {
           {infiniteClients.map((client, index) => (
             <div
               key={index}
-              className="flex items-center justify-center mx-12 w-32 h-16 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+              className="flex items-center justify-center mx-12 w-40 h-20 grayscale brightness-200 opacity-70 hover:grayscale-0 hover:brightness-100 hover:opacity-100 transition-all duration-500"
             >
               <img
                 src={client.logo}
                 alt={client.name}
                 className="max-w-full max-h-full object-contain"
+                onError={(e) => (e.currentTarget.style.display = 'none')}
               />
             </div>
           ))}
