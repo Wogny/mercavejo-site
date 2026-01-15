@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
 
 const clients = [
-  { name: 'EXONLINE', logo: 'images/exonline.webp' },
-  { name: 'FIDELIDADE', logo: 'images/fidelidade.webp' },
-  { name: 'OPTICA', logo: 'images/optica.webp' },
-  { name: 'FAVENI', logo: 'images/faveni.webp' },
-  { name: 'SUBLIME', logo: 'images/sublime.webp' },
-  { name: 'LUCIANA', logo: 'images/luciana.webp' },
-  { name: 'RIOFIBRA', logo: 'images/riofibra.webp' },
-  { name: 'NETFLEX', logo: 'images/netflex.webp' },
-  { name: 'SCOZ', logo: 'images/scoz.webp' },
-  { name: 'VOX', logo: 'images/voxfm.webp' },
+  { name: 'EXONLINE', logo: '/images/exonline.webp' },
+  { name: 'FIDELIDADE', logo: '/images/fidelidade.webp' },
+  { name: 'OPTICA', logo: '/images/optica.webp' },
+  { name: 'FAVENI', logo: '/images/faveni.webp' },
+  { name: 'SUBLIME', logo: '/images/sublime.webp' },
+  { name: 'LUCIANA', logo: '/images/luciana.webp' },
+  { name: 'RIOFIBRA', logo: '/images/riofibra.webp' },
+  { name: 'NETFLEX', logo: '/images/netflex.webp' },
+  { name: 'SCOZ', logo: '/images/scoz.webp' },
+  { name: 'VOX', logo: '/images/voxfm.webp' },
 ];
 
 // Duplicar a lista para criar o efeito infinito
