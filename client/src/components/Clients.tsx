@@ -48,7 +48,7 @@ export default function Clients() {
               <img
                 src={client.logo}
                 alt={client.name}
-                className="max-w-full max-h-full object-contain brightness-0 invert"
+                className="max-w-full max-h-full object-contain"
                 onError={(e) => {
                   console.error('Erro ao carregar logo:', client.logo);
                 }}
