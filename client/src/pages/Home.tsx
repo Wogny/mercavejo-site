@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import Clients from '@/components/Clients';
 import Portfolio from '@/components/Portfolio';
 import Studio from '@/components/Studio';
 import Packages from '@/components/Packages';
@@ -17,6 +18,8 @@ export default function Home() {
         <div className="bg-white">
           <Hero />
         </div>
+
+        <Clients />
 
         {/* 2 - azul (novo azul #20447D) */}
         <div className="bg-[#20447D] text-white">

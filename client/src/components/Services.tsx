@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Card } from '@/components/ui/card';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Briefcase,
   Megaphone,
@@ -9,6 +11,8 @@ import {
   TrendingUp,
   ShoppingCart,
   Stethoscope,
+  Plus,
+  Minus
 } from 'lucide-react';
 
 const services = [
@@ -91,96 +95,118 @@ const services = [
 ];
 
 export default function Services() {
+  const [expandedId, setExpandedId] = useState<number | null>(null);
+
   return (
     <section
       id="services"
-      className="relative py-20 sm:py-32 bg-[#0F3A7D] bg-cover bg-center bg-no-repeat overflow-hidden"
+      className="relative py-20 sm:py-32 bg-[#0F3A7D] overflow-hidden"
     >
-      {/* Overlay para manter o texto legível no fundo */}
-      <div className="absolute inset-0 bg-black/" />
+      {/* Elementos Decorativos de Fundo */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-600/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#d4b67b]/10 rounded-full blur-[120px]" />
+      </div>
 
-      {/* conteúdo acima do overlay */}
       <div className="relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-16 sm:mb-20">
-            <h2 className="text-4xl sm:text-5xl font-display text-white mb-6">
-              Nossos Serviços
-            </h2>
-            <p className="text-lg text-white/85 leading-relaxed">
-              Oferecemos uma gama completa de soluções para transformar seu negócio e gerar resultados reais.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl sm:text-5xl font-display text-white mb-6">
+                Nossos Serviços
+              </h2>
+              <p className="text-lg text-white/85 leading-relaxed">
+                Soluções estratégicas desenhadas para escalar seu negócio no ambiente digital.
+              </p>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => {
               const Icon = service.icon;
+              const isExpanded = expandedId === service.id;
               const isFeatured = Boolean((service as any).featured);
-              const placement = (service as any).placement ?? '';
-
-              // Centralizar os 2 últimos cards (ids 7 e 8) na última linha do desktop (4 colunas)
-              const centerLastTwoOnDesktop =
-                service.id === 7
-                  ? 'lg:col-start-2 lg:col-span-1'
-                  : service.id === 8
-                    ? 'lg:col-start-3 lg:col-span-1'
-                    : '';
 
               return (
-                <div
+                <motion.div
                   key={service.id}
-                  className={`group h-full ${placement} ${centerLastTwoOnDesktop}`}
-                  style={{ animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both` }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  layout
                 >
                   <Card
+                    onClick={() => setExpandedId(isExpanded ? null : service.id)}
                     className={[
-                      'relative h-full p-6 sm:p-8 cursor-pointer transition-all duration-300',
-                      // glass + legibilidade
-                      'bg-white/10 backdrop-blur-sm border border-white/15 shadow-lg',
-                      'hover:bg-white/15 hover:shadow-xl hover:-translate-y-2',
-                      isFeatured ? 'ring-1 ring-[#d4b67b]/60 shadow-xl' : '',
+                      'relative h-full p-6 sm:p-8 cursor-pointer transition-all duration-500 overflow-hidden',
+                      'bg-white/5 backdrop-blur-md border border-white/10 shadow-2xl',
+                      'hover:bg-white/10 hover:border-white/20',
+                      isFeatured ? 'ring-1 ring-[#d4b67b]/40' : '',
+                      isExpanded ? 'bg-white/15 border-[#d4b67b]/30' : ''
                     ].join(' ')}
                   >
-                    {isFeatured && (
-                      <div className="absolute top-4 right-4">
-                        <span className="inline-flex items-center rounded-full bg-[#d4b67b]/20 text-white border border-[#d4b67b]/30 px-3 py-1 text-xs font-semibold">
-                          Destaque
-                        </span>
-                      </div>
-                    )}
+                    {/* Background Glow Effect on Hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <div
-                      className={`w-14 h-14 rounded-lg bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <Icon className="w-7 h-7 text-white" />
+                    <div className="relative z-10">
+                      <div className="flex justify-between items-start mb-6">
+                        <div
+                          className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500`}
+                        >
+                          <Icon className="w-7 h-7 text-white" />
+                        </div>
+                        <div className="text-white/40 group-hover:text-[#d4b67b] transition-colors">
+                          {isExpanded ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                        </div>
+                      </div>
+
+                      <h3 className="text-xl font-heading text-white mb-3 group-hover:text-[#d4b67b] transition-colors">
+                        {service.title}
+                      </h3>
+
+                      <AnimatePresence mode="wait">
+                        {isExpanded ? (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <p className="text-white/90 text-sm sm:text-base leading-relaxed mt-4 pt-4 border-t border-white/10">
+                              {service.description}
+                            </p>
+                            <div className="mt-6 flex items-center text-[#d4b67b] text-sm font-bold">
+                              SOLICITAR ORÇAMENTO
+                              <div className="ml-2 w-4 h-[2px] bg-[#d4b67b]" />
+                            </div>
+                          </motion.div>
+                        ) : (
+                          <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="text-white/60 text-sm line-clamp-2"
+                          >
+                            {service.description}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
                     </div>
 
-                    <h3 className="text-xl font-heading text-white mb-4">
-                      {service.title}
-                    </h3>
-
-                    <p className={`text-white/80 text-sm leading-relaxed ${isFeatured ? 'sm:text-base' : ''}`}>
-                      {service.description}
-                    </p>
-
-                    <div
-                      className={[
-                        'mt-6 h-1 rounded-full transition-all duration-300',
-                        isFeatured ? 'w-16 bg-[#d4b67b] group-hover:w-24' : 'w-8 bg-[#d4b67b] group-hover:w-12',
-                      ].join(' ')}
-                    />
+                    {isFeatured && (
+                      <div className="absolute -right-8 -top-8 w-24 h-24 bg-[#d4b67b]/10 rounded-full blur-2xl" />
+                    )}
                   </Card>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
-
-        <style>{`
-          @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-        `}</style>
       </div>
     </section>
   );
