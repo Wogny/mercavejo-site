@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -48,6 +48,28 @@ export default function Podcast() {
   const videoRef2 = useRef<HTMLVideoElement>(null);
   const [isMuted1, setIsMuted1] = useState(true);
   const [isMuted2, setIsMuted2] = useState(true);
+  const [video1InView, setVideo1InView] = useState(false);
+  const [video2InView, setVideo2InView] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === videoRef1.current) {
+            setVideo1InView(entry.isIntersecting);
+          } else if (entry.target === videoRef2.current) {
+            setVideo2InView(entry.isIntersecting);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '200px' }
+    );
+
+    if (videoRef1.current) observer.observe(videoRef1.current);
+    if (videoRef2.current) observer.observe(videoRef2.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleMouseEnter = (videoRef: React.RefObject<HTMLVideoElement>, setMuted: React.Dispatch<React.SetStateAction<boolean>>) => {
     if (videoRef.current) {
@@ -160,30 +182,38 @@ export default function Podcast() {
                   onMouseEnter={() => handleMouseEnter(videoRef1, setIsMuted1)}
                   onMouseLeave={() => handleMouseLeave(videoRef1, setIsMuted1)}
                 >
-                   <video 
-                     ref={videoRef1}
-                     src="/images/corte1.mp4" 
-                     className="w-full h-full object-cover" 
-                     autoPlay
-                     loop
-                     muted
-                     playsInline
-                   />
+                   {video1InView ? (
+                     <video 
+                       ref={videoRef1}
+                       src="/images/corte1.mp4" 
+                       className="w-full h-full object-cover" 
+                       autoPlay
+                       loop
+                       muted
+                       playsInline
+                     />
+                   ) : (
+                     <div className="w-full h-full bg-gray-800 animate-pulse" />
+                   )}
                 </div>
                 <div 
                   className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative mt-8 group shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                   onMouseEnter={() => handleMouseEnter(videoRef2, setIsMuted2)}
                   onMouseLeave={() => handleMouseLeave(videoRef2, setIsMuted2)}
                 >
-                   <video 
-                     ref={videoRef2}
-                     src="/images/corte2.mp4" 
-                     className="w-full h-full object-cover" 
-                     autoPlay
-                     loop
-                     muted
-                     playsInline
-                   />
+                   {video2InView ? (
+                     <video 
+                       ref={videoRef2}
+                       src="/images/corte2.mp4" 
+                       className="w-full h-full object-cover" 
+                       autoPlay
+                       loop
+                       muted
+                       playsInline
+                     />
+                   ) : (
+                     <div className="w-full h-full bg-gray-800 animate-pulse" />
+                   )}
                 </div>
               </div>
             </div>

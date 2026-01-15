@@ -98,7 +98,7 @@ export default function Studio() {
 
               <div className="group relative h-80 sm:h-[520px] rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
                 <img
-                  src="/images/Estúdio.jpg"
+                  src="/images/Estúdio.webp"
                   alt="Estúdio Mercavejo"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                   loading="lazy"

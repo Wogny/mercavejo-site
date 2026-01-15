@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-3">
               <img
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Logo"
                 className="h-14 w-14 rounded-full object-cover ring-1 ring-slate-200 bg-white"
               />

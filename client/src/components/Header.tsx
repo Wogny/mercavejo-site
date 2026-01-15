@@ -47,7 +47,7 @@ export default function Header() {
               className="flex items-center gap-2 flex-shrink-0"
             >
               <img
-                src="/images/logo.png"
+                src="/images/logo.webp"
                 alt="Mercavejo"
                 className="h-16 w-16 rounded-full object-cover ring-1 ring-white/20"
               />
