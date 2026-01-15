@@ -50,14 +50,16 @@ export default function Podcast() {
   const [isMuted2, setIsMuted2] = useState(true);
   const [video1InView, setVideo1InView] = useState(false);
   const [video2InView, setVideo2InView] = useState(false);
+  const containerRef1 = useRef<HTMLDivElement>(null);
+  const containerRef2 = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.target === videoRef1.current) {
+          if (entry.target === containerRef1.current) {
             setVideo1InView(entry.isIntersecting);
-          } else if (entry.target === videoRef2.current) {
+          } else if (entry.target === containerRef2.current) {
             setVideo2InView(entry.isIntersecting);
           }
         });
@@ -65,8 +67,8 @@ export default function Podcast() {
       { threshold: 0.1, rootMargin: '200px' }
     );
 
-    if (videoRef1.current) observer.observe(videoRef1.current);
-    if (videoRef2.current) observer.observe(videoRef2.current);
+    if (containerRef1.current) observer.observe(containerRef1.current);
+    if (containerRef2.current) observer.observe(containerRef2.current);
 
     return () => observer.disconnect();
   }, []);
@@ -178,6 +180,7 @@ export default function Podcast() {
               </div>
               <div className="md:w-1/2 grid grid-cols-2 gap-4">
                 <div 
+                  ref={containerRef1}
                   className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative group shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                   onMouseEnter={() => handleMouseEnter(videoRef1, setIsMuted1)}
                   onMouseLeave={() => handleMouseLeave(videoRef1, setIsMuted1)}
@@ -189,7 +192,7 @@ export default function Podcast() {
                        className="w-full h-full object-cover" 
                        autoPlay
                        loop
-                       muted
+                       muted={isMuted1}
                        playsInline
                      />
                    ) : (
@@ -197,6 +200,7 @@ export default function Podcast() {
                    )}
                 </div>
                 <div 
+                  ref={containerRef2}
                   className="aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden relative mt-8 group shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
                   onMouseEnter={() => handleMouseEnter(videoRef2, setIsMuted2)}
                   onMouseLeave={() => handleMouseLeave(videoRef2, setIsMuted2)}
@@ -208,7 +212,7 @@ export default function Podcast() {
                        className="w-full h-full object-cover" 
                        autoPlay
                        loop
-                       muted
+                       muted={isMuted2}
                        playsInline
                      />
                    ) : (
