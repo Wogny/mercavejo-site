@@ -43,13 +43,12 @@ export default function Clients() {
           {infiniteClients.map((client, index) => (
             <div
               key={index}
-              className="flex-shrink-0 flex items-center justify-center mx-8 w-32 h-16 opacity-80 hover:opacity-100 transition-all duration-500"
+              className="flex-shrink-0 flex items-center justify-center mx-10 w-32 h-20 transition-all duration-500"
             >
               <img
                 src={client.logo}
                 alt={client.name}
-                className="w-full h-full object-contain brightness-0 invert"
-                style={{ minWidth: '100px', minHeight: '40px' }}
+                className="max-w-full max-h-full object-contain opacity-70 grayscale brightness-125 hover:opacity-100 hover:grayscale-0 hover:brightness-100 transition-all duration-500"
                 onError={(e) => {
                   console.error('Erro ao carregar logo:', client.logo);
                 }}
