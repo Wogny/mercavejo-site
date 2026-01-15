@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
 
 const clients = [
-  { name: 'EXONLINE', logo: '/images/exonline.webp' },
-  { name: 'FIDELIDADE', logo: '/images/fidelidade.webp' },
-  { name: 'OPTICA', logo: '/images/optica.webp' },
-  { name: 'FAVENI', logo: '/images/faveni.webp' },
-  { name: 'SUBLIME', logo: '/images/sublime.webp' },
-  { name: 'LUCIANA', logo: '/images/luciana.webp' },
-  { name: 'RIOFIBRA', logo: '/images/riofibra.webp' },
-  { name: 'NETFLEX', logo: '/images/netflex.webp' },
-  { name: 'SCOZ', logo: '/images/scoz.webp' },
-  { name: 'VOX', logo: '/images/voxfm.webp' },
+  { name: 'EXONLINE', logo: 'images/exonline.webp' },
+  { name: 'FIDELIDADE', logo: 'images/fidelidade.webp' },
+  { name: 'OPTICA', logo: 'images/optica.webp' },
+  { name: 'FAVENI', logo: 'images/faveni.webp' },
+  { name: 'SUBLIME', logo: 'images/sublime.webp' },
+  { name: 'LUCIANA', logo: 'images/luciana.webp' },
+  { name: 'RIOFIBRA', logo: 'images/riofibra.webp' },
+  { name: 'NETFLEX', logo: 'images/netflex.webp' },
+  { name: 'SCOZ', logo: 'images/scoz.webp' },
+  { name: 'VOX', logo: 'images/voxfm.webp' },
 ];
 
 // Duplicar a lista para criar o efeito infinito
@@ -43,13 +43,15 @@ export default function Clients() {
           {infiniteClients.map((client, index) => (
             <div
               key={index}
-              className="flex items-center justify-center mx-12 w-40 h-20 grayscale brightness-200 opacity-70 hover:grayscale-0 hover:brightness-100 hover:opacity-100 transition-all duration-500"
+              className="flex items-center justify-center mx-12 w-40 h-20 opacity-90 hover:opacity-100 transition-all duration-500"
             >
               <img
                 src={client.logo}
                 alt={client.name}
-                className="max-w-full max-h-full object-contain"
-                onError={(e) => (e.currentTarget.style.display = 'none')}
+                className="max-w-full max-h-full object-contain brightness-0 invert"
+                onError={(e) => {
+                  console.error('Erro ao carregar logo:', client.logo);
+                }}
               />
             </div>
           ))}
